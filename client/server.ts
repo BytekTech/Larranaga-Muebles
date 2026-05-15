@@ -41,9 +41,12 @@ export function app(): express.Express {
     const secret = req.query['secret'];
     if (!secret) return next();
 
-    const userIp = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || '127.0.0.1')
-      .split(',')[0]
-      .trim();
+    const userIp = String(
+      req.headers['x-real-ip'] || 
+      req.headers['x-forwarded-for'] || 
+      req.socket.remoteAddress || 
+      '127.0.0.1'
+    ).split(',')[0].trim();
     const allowedIps = process.env['IP_SERVER'] || '127.0.0.1';
     const allowedSecret = process.env['SECRET_SERVER'];
 
@@ -57,6 +60,7 @@ export function app(): express.Express {
       });
       return res.redirect(302, '/portal-admin');
     }
+    console.log('')
     return res.redirect(302, '/not-found');
   });
 
