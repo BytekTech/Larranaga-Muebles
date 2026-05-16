@@ -1,1 +1,9 @@
-<p>button works!</p>
+<a href="/">
+  <img src="favicon.ico" class="icono" alt="Logo"/>
+  <p>LARRAÑAGA</p>
+  <p>MUEBLES</p>
+</a>
+
+@for(item of buttons; track item.id){
+  <a href={{item.enlace}}><p>{{ item.texto }}</p></a>
+}

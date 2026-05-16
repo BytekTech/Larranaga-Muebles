@@ -1,11 +1,16 @@
 nav{
-  margin: 0
+  margin: 0;
+  display: flex;
 }
 
 .dark-header{
-  color: red;
+  color: #A88548;
+  nav{
+    a{
+    }
+  }
 }
 
 .light-header{
-  color: blue
+  color: #F8CF88;
 }

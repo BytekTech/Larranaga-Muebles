@@ -1,7 +1,12 @@
-<app-header></app-header>
+@if(mostrarHeader){
+  <app-header></app-header>
+}
 
 <main class="main">
   <router-outlet></router-outlet>
+  <app-whatsapp></app-whatsapp>
 </main>
 
-<app-footer></app-footer>
+@if(mostrarFooter){
+  <app-footer></app-footer>
+}

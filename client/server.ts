@@ -4,9 +4,6 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
-import * as dotenv from 'dotenv';
-
-dotenv.config()
 
 function normalizeIp(ip: string): string {
   if (ip === '::1') return '127.0.0.1';
@@ -59,7 +56,6 @@ export function app(): express.Express {
       });
       return res.redirect(302, '/portal-admin');
     }
-    console.log('')
     return res.redirect(302, '/not-found');
   });
 
@@ -74,9 +70,10 @@ export function app(): express.Express {
       return res.redirect(302, '/not-found')
     }
 
-
     next();
   });
+
+  
 
   server.get('*.*', express.static(browserDistFolder, {
     maxAge: '1y'

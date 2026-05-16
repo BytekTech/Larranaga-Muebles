@@ -1,0 +1,54 @@
+{
+  "sitio": {
+    "marca": "LARRAÑAGA MUEBLES",
+    "src": "./favicon.ico",
+    "placeholder": "logo larrañaga",
+    "enlace": ""
+  },
+  "menu_navegacion": [
+    {
+      "id": 0,
+      "texto": "Nosotros",
+      "enlace": "nosotros"
+    },
+    {
+      "id": 1,
+      "texto": "Muebles",
+      "links": [
+        {
+          "idLink": 0,
+          "placeholder": "Equipamientos oficina", 
+          "urls": [
+            {"idUrls": 0, "placeholder": "Escritorios", "src": "escritorios"},
+            {"idUrls": 1, "placeholder": "Biblioteca", "src": "biblioteca"},
+            {"idUrls": 2, "placeholder": "Mesas de reunión", "src": ""},
+            {"idUrls": 3, "placeholder": "Mesas de trabajo", "src": ""},
+            {"idUrls": 4, "placeholder": "Mostradores", "src": ""},
+            {"idUrls": 5, "placeholder": "Sillas/Sillones", "src": ""}
+          ]
+        },
+        {
+          "idLink": 1,
+          "placeholder": "Equipamientos hogar",
+          "urls": [
+            {"idUrls": 0, "placeholder": "Cocina", "src": "cocina"},
+            {"idUrls": 1, "placeholder": "Living/Comedor", "src": "comedor"},
+            {"idUrls": 2, "placeholder": "Baño", "src": "baño"},
+            {"idUrls": 3, "placeholder": "Dormitorio", "src": "dormitorio"},
+            {"idUrls": 4, "placeholder": "Sillas ergonomicas", "src": "sillas-ergonomicas"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "texto": "Nuestros trabajos",
+      "enlace": "trabajos"
+    },
+    {
+      "id": 3,
+      "texto": "Contacto",
+      "enlace": "#contacto"
+    }
+  ]
+}
