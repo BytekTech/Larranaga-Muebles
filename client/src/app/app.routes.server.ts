@@ -15,7 +15,7 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'portal-admin',
-    renderMode: RenderMode.Server
+    renderMode: RenderMode.Client
   },
   {
     path: '**',
