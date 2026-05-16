@@ -1,4 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import * as dotenv from 'dotenv';
+dotenv.config()
 
 function normalizeIp(ip: string): string {
   if (ip === '::1') return '127.0.0.1';
@@ -16,6 +18,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   const secret = req.query['secret'] as string;
 
   if (!secret) {
+    console.log('No hay secret')
     return res.redirect(302, '/not-found');
   }
 
@@ -28,11 +31,9 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   const allowedSecret = process.env['SECRET_SERVER'];
 
   if (secret === allowedSecret && isAllowedIp(userIp, allowedIps)) {
-    // Seteamos la cookie nativamente. No usamos HttpOnly para que Angular pueda leerla.
     res.setHeader('Set-Cookie', 'access-granted=true; Path=/; Max-Age=1800; Secure; SameSite=Lax');
     return res.redirect(302, '/portal-admin');
   }
 
-  console.log(`Acceso denegado. IP: ${userIp}`);
   return res.redirect(302, '/not-found');
 }

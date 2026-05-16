@@ -7,7 +7,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   const document = inject(DOCUMENT);
   const platformId = inject(PLATFORM_ID);
   
-  // En el servidor (SSR) permitimos el paso inicial para no romper la hidratación
   if (!isPlatformBrowser(platformId)) return true;
 
   const getCookie = (name: string) => {
@@ -20,7 +19,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const access = getCookie('access-granted') === 'true';
 
   if (access) {
-    return true; // Tiene la cookie, entra sin problemas
+    return true;
   } 
 
   const secret = route.queryParams['secret'];
@@ -29,7 +28,6 @@ export const authGuard: CanActivateFn = (route, state) => {
     return false;
   }
 
-  // Si no tiene cookie ni secreto en la URL, se va a not-found
   router.navigate(['/not-found']);
   return false;
 };

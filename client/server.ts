@@ -20,7 +20,6 @@ function isAllowedIp(clientIp: string, allowedIps: string): boolean {
     .includes(normalizeIp(clientIp));
 }
 
-// The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
@@ -114,4 +113,6 @@ function run(): void {
   });
 }
 
-run()
+if (!process.env['VERCEL']) {
+  run();
+}
